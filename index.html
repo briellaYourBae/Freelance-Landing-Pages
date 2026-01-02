@@ -21,18 +21,33 @@
             theme: {
                 extend: {
                     colors: {
+                        // taupe: {
+                        //     50: '#F4F2F0',
+                        //     100: '#E9E6E2',
+                        //     200: '#D4CCC4',
+                        //     300: '#BEB3A7',
+                        //     400: '#A89A8A',
+                        //     500: '#93806C',
+                        //     600: '#756757',
+                        //     700: '#584D41',
+                        //     800: '#3B332B',
+                        //     900: '#1D1A16',
+                        //     950: '#15120F',
+                        // }
+                        
+                        // from AI
                         taupe: {
-                            50: '#F4F2F0',
-                            100: '#E9E6E2',
-                            200: '#D4CCC4',
-                            300: '#BEB3A7',
-                            400: '#A89A8A',
-                            500: '#93806C',
-                            600: '#756757',
-                            700: '#584D41',
-                            800: '#3B332B',
-                            900: '#1D1A16',
-                            950: '#15120F',
+                        50:  '#F6F3F0',  // bone ivory (lebih creamy)
+                        100: '#E3DCD6',  // pale dusty bone
+                        200: '#C7B9AF',  // dusty clay taupe
+                        300: '#A89282',  // warm muddy taupe (mirip tekstur sayap kiri)
+                        400: '#876D5F',  // earthy taupe dengan hint merah
+                        500: '#654C41',  // deep muddy taupe (gothic tone)
+                        600: '#4B3830',  // dark earthy brown (lebih dekat ke darah kering)
+                        700: '#332421',  // shadow brown (deep gothic)
+                        800: '#1F1514',  // near-black brown (cocok utk dark mode)
+                        900: '#130C0C',  // dark blood black (selaras dgn hitam & merah)
+                        950: '#0B0606',  // abyss black (bener2 deep, cocok logo kamu)
                         }
                     },
                     fontFamily: {
@@ -136,19 +151,9 @@
                 </div>
                 
                 <!-- Hero Illustration -->
+                <!-- Hero Illustration -->
                 <div class="float hidden md:block">
-                    <svg viewBox="0 0 400 400" class="w-full">
-                        <defs>
-                            <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#93806C;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#756757;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="200" cy="200" r="150" fill="url(#heroGradient)" opacity="0.2"/>
-                        <path d="M200,80 L250,150 L320,150 L270,200 L290,270 L200,230 L110,270 L130,200 L80,150 L150,150 Z" 
-                              fill="url(#heroGradient)" opacity="0.6"/>
-                        <circle cx="200" cy="200" r="80" fill="url(#heroGradient)" opacity="0.8"/>
-                    </svg>
+                    <img src="img/luciell-logo.png" alt="Logo Hero" class="w-full h-auto max-w-full rounded-lg object-cover shadow-lg opacity-80 hover:opacity-100 transition-opacity duration-300">
                 </div>
             </div>
         </div>
