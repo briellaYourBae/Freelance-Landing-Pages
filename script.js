@@ -1,31 +1,163 @@
 // ======================================
-// THEME TOGGLE
+// THEME TOGGLE - COMPLETE DARK/LIGHT MODE
 // ======================================
 function toggleTheme() {
     const body = document.body;
     const navbar = document.getElementById('navbar');
     const darkIcon = document.getElementById('theme-icon-dark');
     const lightIcon = document.getElementById('theme-icon-light');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const footer = document.querySelector('footer');
     
+    // Toggle light-mode class
     body.classList.toggle('light-mode');
     
     if (body.classList.contains('light-mode')) {
-        // Switch to Light Mode
+        // ===== SWITCH TO LIGHT MODE =====
+        
+        // Body Background & Text
         body.classList.remove('bg-gradient-to-br', 'from-taupe-950', 'via-taupe-900', 'to-taupe-800', 'text-taupe-100');
         body.classList.add('bg-gradient-to-br', 'from-taupe-50', 'via-taupe-100', 'to-taupe-200', 'text-taupe-900');
+        
+        // Navbar
         navbar.classList.remove('bg-taupe-950/80');
-        navbar.classList.add('bg-taupe-50/80');
+        navbar.classList.add('bg-taupe-50/80', 'border-taupe-300/30');
+        
+        // Mobile Menu
+        if (mobileMenu) {
+            mobileMenu.classList.remove('bg-taupe-950/95');
+            mobileMenu.classList.add('bg-taupe-50/95');
+        }
+        
+        // Footer
+        if (footer) {
+            footer.classList.remove('bg-taupe-950/50');
+            footer.classList.add('bg-taupe-50/80', 'border-taupe-300/30');
+        }
+        
+        // Nav Links
+        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+            link.classList.remove('text-taupe-100');
+            link.classList.add('text-taupe-900');
+        });
+        
+        // All Cards
+        document.querySelectorAll('.card, [class*="bg-taupe-500/10"]').forEach(card => {
+            card.classList.remove('bg-taupe-500/10', 'border-taupe-500/20');
+            card.classList.add('bg-white/90', 'border-taupe-300/40');
+        });
+        
+        // All Text with taupe-300 (descriptions)
+        document.querySelectorAll('.text-taupe-300').forEach(el => {
+            el.classList.remove('text-taupe-300');
+            el.classList.add('text-taupe-700', 'light-text');
+        });
+        
+        // All Text with taupe-400 (muted text)
+        document.querySelectorAll('.text-taupe-400').forEach(el => {
+            el.classList.remove('text-taupe-400');
+            el.classList.add('text-taupe-600', 'light-muted');
+        });
+        
+        // Form Inputs
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.classList.remove('bg-taupe-500/10', 'border-taupe-500/20', 'text-taupe-100');
+            input.classList.add('bg-white/90', 'border-taupe-300/60', 'text-taupe-900');
+        });
+        
+        // Skill Bars Background
+        document.querySelectorAll('.skill-bar, [class*="bg-taupe-500/20"]').forEach(bar => {
+            if (bar.classList.contains('h-3')) {
+                bar.classList.remove('bg-taupe-500/20');
+                bar.classList.add('bg-taupe-200');
+            }
+        });
+        
+        // Service Icons
+        document.querySelectorAll('.service-icon, [class*="from-taupe-500"]').forEach(icon => {
+            icon.classList.remove('from-taupe-500', 'to-taupe-600');
+            icon.classList.add('from-taupe-600', 'to-taupe-700');
+        });
+        
+        // Theme Icons
         darkIcon.classList.add('hidden');
         lightIcon.classList.remove('hidden');
+        
+        // Save preference
         localStorage.setItem('theme', 'light');
+        
     } else {
-        // Switch to Dark Mode
+        // ===== SWITCH TO DARK MODE =====
+        
+        // Body Background & Text
         body.classList.remove('bg-gradient-to-br', 'from-taupe-50', 'via-taupe-100', 'to-taupe-200', 'text-taupe-900');
         body.classList.add('bg-gradient-to-br', 'from-taupe-950', 'via-taupe-900', 'to-taupe-800', 'text-taupe-100');
-        navbar.classList.remove('bg-taupe-50/80');
+        
+        // Navbar
+        navbar.classList.remove('bg-taupe-50/80', 'border-taupe-300/30');
         navbar.classList.add('bg-taupe-950/80');
+        
+        // Mobile Menu
+        if (mobileMenu) {
+            mobileMenu.classList.remove('bg-taupe-50/95');
+            mobileMenu.classList.add('bg-taupe-950/95');
+        }
+        
+        // Footer
+        if (footer) {
+            footer.classList.remove('bg-taupe-50/80', 'border-taupe-300/30');
+            footer.classList.add('bg-taupe-950/50');
+        }
+        
+        // Nav Links
+        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+            link.classList.remove('text-taupe-900');
+            link.classList.add('text-taupe-100');
+        });
+        
+        // All Cards
+        document.querySelectorAll('.card, [class*="bg-white/90"]').forEach(card => {
+            card.classList.remove('bg-white/90', 'border-taupe-300/40');
+            card.classList.add('bg-taupe-500/10', 'border-taupe-500/20');
+        });
+        
+        // Restore taupe-300 text
+        document.querySelectorAll('.light-text').forEach(el => {
+            el.classList.remove('text-taupe-700', 'light-text');
+            el.classList.add('text-taupe-300');
+        });
+        
+        // Restore taupe-400 text
+        document.querySelectorAll('.light-muted').forEach(el => {
+            el.classList.remove('text-taupe-600', 'light-muted');
+            el.classList.add('text-taupe-400');
+        });
+        
+        // Form Inputs
+        document.querySelectorAll('input, textarea').forEach(input => {
+            input.classList.remove('bg-white/90', 'border-taupe-300/60', 'text-taupe-900');
+            input.classList.add('bg-taupe-500/10', 'border-taupe-500/20', 'text-taupe-100');
+        });
+        
+        // Skill Bars Background
+        document.querySelectorAll('[class*="bg-taupe-200"]').forEach(bar => {
+            if (bar.classList.contains('h-3')) {
+                bar.classList.remove('bg-taupe-200');
+                bar.classList.add('bg-taupe-500/20');
+            }
+        });
+        
+        // Service Icons
+        document.querySelectorAll('[class*="from-taupe-600"]').forEach(icon => {
+            icon.classList.remove('from-taupe-600', 'to-taupe-700');
+            icon.classList.add('from-taupe-500', 'to-taupe-600');
+        });
+        
+        // Theme Icons
         darkIcon.classList.remove('hidden');
         lightIcon.classList.add('hidden');
+        
+        // Save preference
         localStorage.setItem('theme', 'dark');
     }
 }
@@ -36,6 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedTheme === 'light') {
         toggleTheme();
     }
+    
+    // Add smooth transition to all elements
+    document.body.style.transition = 'all 0.3s ease';
 });
 
 // ======================================
@@ -165,30 +300,64 @@ function animateSkills() {
 document.addEventListener('DOMContentLoaded', animateSkills);
 
 // ======================================
-// FORM SUBMISSION
+// FORM SUBMISSION WITH ANIMATION
 // ======================================
 function handleSubmit(event) {
     event.preventDefault();
     
     const form = event.target;
     const formData = new FormData(form);
+    const submitButton = form.querySelector('button[type="submit"]');
     
     const name = formData.get('name');
     const email = formData.get('email');
+    const subject = formData.get('subject');
     const message = formData.get('message');
     
-    // Simulate form submission
-    console.log('Form Data:', { name, email, message });
+    // Add loading state
+    submitButton.disabled = true;
+    submitButton.innerHTML = `
+        <svg class="animate-spin h-5 w-5 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+    `;
     
-    // Show success message
-    alert('Terima kasih! Pesan Anda telah terkirim. Saya akan segera menghubungi Anda.');
+    // Simulate form submission (replace with actual API call)
+    setTimeout(() => {
+        console.log('Form Data:', { name, email, subject, message });
+        
+        // Show success message
+        const successDiv = document.createElement('div');
+        successDiv.className = 'success-message';
+        successDiv.innerHTML = `
+            <div class="flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>Terima kasih! Pesan Anda telah terkirim. Saya akan segera menghubungi Anda.</span>
+            </div>
+        `;
+        form.appendChild(successDiv);
+        
+        // Reset form
+        form.reset();
+        
+        // Reset button
+        submitButton.disabled = false;
+        submitButton.textContent = 'Kirim Pesan';
+        
+        // Remove success message after 5 seconds
+        setTimeout(() => {
+            successDiv.remove();
+        }, 5000);
+        
+    }, 1500);
     
-    // Reset form
-    form.reset();
-    
-    // In production, you would send this to your backend or email service
-    // Example with EmailJS or similar service:
-    // emailjs.send('service_id', 'template_id', { name, email, message });
+    // In production, use EmailJS or similar:
+    // emailjs.send('service_id', 'template_id', { name, email, subject, message })
+    //   .then(() => { /* success */ })
+    //   .catch(() => { /* error */ });
 }
 
 // ======================================
@@ -252,22 +421,36 @@ function animateCounter(element, target, duration = 2000) {
 }
 
 // ======================================
-// INITIALIZE ANIMATIONS
+// INITIALIZE ANIMATIONS - ENHANCED
 // ======================================
 document.addEventListener('DOMContentLoaded', () => {
     // Animate stats when in view
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                const target = parseInt(entry.target.textContent);
-                animateCounter(entry.target, target, 1500);
-                entry.target.classList.add('animated');
+                const textContent = entry.target.textContent.trim();
+                const target = parseInt(textContent);
+                
+                if (!isNaN(target)) {
+                    animateCounter(entry.target, target, 1500);
+                    entry.target.classList.add('animated');
+                }
             }
         });
     }, { threshold: 0.5 });
     
-    const statNumbers = document.querySelectorAll('.text-3xl.font-bold');
+    // Target all stat numbers in hero section
+    const statNumbers = document.querySelectorAll('#home .text-3xl.font-bold');
     statNumbers.forEach(stat => statsObserver.observe(stat));
+    
+    // Initialize portfolio filter on load
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    portfolioItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
 });
 
 // ======================================
@@ -356,10 +539,38 @@ if ('IntersectionObserver' in window) {
 // PREVENT DEFAULT FORM SUBMIT
 // ======================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Contact Form
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', handleSubmit);
     }
+    
+    // Newsletter Form
+    const newsletterForms = document.querySelectorAll('footer form');
+    newsletterForms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = form.querySelector('input[type="email"]').value;
+            
+            // Show success message
+            const button = form.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = '✓ Subscribed!';
+            button.classList.add('bg-green-600');
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('bg-green-600');
+                form.reset();
+            }, 3000);
+            
+            console.log('Newsletter subscription:', email);
+        });
+    });
 });
 
 console.log('🚀 Portfolio Website Loaded Successfully!');
+console.log('✨ Dark/Light Mode: Enabled');
+console.log('📱 Responsive Design: Active');
+console.log('🎨 Animations: Running');
+console.log('💼 Made with ❤️ by DevIllustrate');
