@@ -1,4 +1,25 @@
+
         /* Minimal Custom Styles */
+        
+        /* Smooth Transition for ALL Elements */
+        * {
+            transition: background-color 0.3s ease, 
+                        color 0.3s ease, 
+                        border-color 0.3s ease,
+                        opacity 0.3s ease,
+                        transform 0.3s ease;
+        }
+        
+        /* Remove transition for animated elements */
+        .fade-in,
+        .float,
+        .skill-progress,
+        [class*="hover:"],
+        button,
+        a {
+            transition: all 0.3s ease;
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -22,6 +43,7 @@
             animation: float 3s ease-in-out infinite;
         }
         
+        /* Gradient Text */
         .gradient-text {
             background: linear-gradient(90deg, #A89A8A, #756757);
             -webkit-background-clip: text;
@@ -29,11 +51,16 @@
             background-clip: text;
         }
         
-        body.light-mode .gradient-text {
-            background: linear-gradient(90deg, #756757, #3B332B);
+        .dark .gradient-text {
+            background: linear-gradient(90deg, #93806C, #756757);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+        
+        /* Navigation Link Underline */
+        .nav-link {
+            position: relative;
         }
         
         .nav-link::after {
@@ -51,6 +78,7 @@
             width: 100%;
         }
         
+        /* Skill Progress Bar */
         .skill-progress::after {
             content: '';
             position: absolute;
@@ -60,4 +88,116 @@
             bottom: 0;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             animation: shimmer 2s infinite;
+        }
+        
+        /* Portfolio Overlay */
+        .portfolio-item .portfolio-overlay {
+            transition: opacity 0.4s ease;
+        }
+        
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: rgba(147, 128, 108, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(147, 128, 108, 0.2);
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #756757;
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #93806C;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #15120F;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #E9E6E2;
+        }
+        
+        /* Testimonials Scroll */
+        .testimonials-container {
+            scrollbar-width: thin;
+            scrollbar-color: #93806C transparent;
+        }
+        
+        .testimonials-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .testimonials-container::-webkit-scrollbar-thumb {
+            background: #93806C;
+            border-radius: 10px;
+        }
+        
+        /* Loading State */
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        /* Success Message */
+        .success-message {
+            background: linear-gradient(135deg, #93806C, #756757);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* Logo Image */
+        .logo-image {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid;
+            border-color: #93806C;
+        }
+        
+        .dark .logo-image {
+            border-color: #93806C;
+        }
+        
+        /* Project Image */
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        /* Client Image */
+        .client-image {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        /* Google Maps */
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
